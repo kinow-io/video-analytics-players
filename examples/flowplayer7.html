@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <body>
+
+    <link rel="stylesheet" href="//releases.flowplayer.org/7.2.1/skin/skin.css">
+    <script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="//releases.flowplayer.org/7.2.1/flowplayer.min.js"></script>
+    <script src="dist/flowplayer.js"></script>
+
+  <!-- <div class="player">
+    <video>
+      <source type="video/mp4" src="videos/test.mp4">
+    </video>
+  </div> -->
+
+  <div id="player">
+
+  <script>
+
+
+
+    // select the above element as player container
+    var container = document.getElementById("player");
+
+    // install flowplayer into selected container
+    flowplayer(container, {
+        autoplay: true,
+        // splash: true,
+        clip: {
+            sources: [{
+                type: "video/mp4",
+                src: "videos/test.mp4"
+            }],
+        },
+    })
+
+      // install flowplayer into all elements with CSS class="player"
+      //$(".player").flowplayer({});
+
+
+    flowplayer("#player", {})
+        .on('ready', function(e, api) {
+            videoAnalytics(api)
+        })
+
+
+    function videoAnalytics(flowplayer) {
+        console.log(flowplayer)
+        let videoAnalytics = new VideoAnalytics.Flowplayer({
+          player: flowplayer,
+          hostingId: 2,
+          customerId: 2,
+          videoId: 2,
+          datas: {
+            isoCode : 'FR',
+          },
+          apiUrl: 'http://video-analytics-realtime.app:1337'
+        });
+    }
+
+  </script>
+
+  <style>
+  .flowplayer {
+   width: 600px;
+   height: 338px;
+}
+</style>
+  </body>
+</html>

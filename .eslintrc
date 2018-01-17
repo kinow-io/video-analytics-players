@@ -1,0 +1,15 @@
+{
+  "env": {
+    "browser": false,
+    "commonjs": false,
+    "es6": false,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  },
+    "rules": {
+      semi: ["error", "never"]
+    }
+}
