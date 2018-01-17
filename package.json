@@ -1,16 +1,20 @@
 {
   "name": "video-analytics-players",
   "version": "1.0.0",
-  "description": "",
+  "description": "Video Players adapters for Kinow Video Analytics",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-local": "webpack --config webpack.config.js",
     "build": "webpack --config webpack.config.js --optimize-minimize"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["video", "analytics", "kinow", "clappr", "flowplayer", "videojs"],
+  "author": "Kinow",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kinow-io/video-analytics-players.git"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
