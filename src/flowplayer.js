@@ -53,12 +53,26 @@ export class Flowplayer extends Player {
     options.playerName = playerName
     options.playerVersion = playerVersion
 
+    if (!options.token && !options.hostingId) {
+      throw Error("hostingId or token is missing.")
+    }
+
+    if (!options.token && !options.customerId) {
+      throw Error("customerId or token is missing.")
+    }
+
+    if (!options.token && !options.videoId) {
+      throw Error("videoId or token is missing.")
+    }
+
     super(options)
 
-    this.player.ids = {
-      hostingId: options.hostingId,
-      videoId: options.videoId,
-      customerId: options.customerId
+    if (!options.token) {
+      this.player.ids = {
+        hostingId: options.hostingId,
+        videoId: options.videoId,
+        customerId: options.customerId
+      }
     }
 
     this.capturePlayerEvents()

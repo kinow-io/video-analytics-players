@@ -1,12 +1,12 @@
 {
-  "name": "video-analytics-players",
-  "version": "1.0.0",
+  "name": "kinow-video-analytics",
+  "version": "1.0.0-1",
   "description": "Video Players adapters for Kinow Video Analytics",
   "main": "index.js",
+  "homepage": "https://www.kinow.com",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-local": "webpack --config webpack.config.js",
-    "build": "webpack --config webpack.config.js --optimize-minimize"
+    "build": "webpack --config webpack.config.js"
   },
   "keywords": ["video", "analytics", "kinow", "clappr", "flowplayer", "videojs"],
   "author": "Kinow",
@@ -26,5 +26,8 @@
   "dependencies": {
     "sails.io.js": "^1.1.13",
     "socket.io-client": "^2.0.4"
+  },
+  "engines": {
+    "node": ">= 7.6.0"
   }
 }

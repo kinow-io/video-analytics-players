@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
   <body>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clappr@0.2.82/dist/clappr.min.js"></script>
-    <script src="dist/clappr.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+    <script src="../dist/clappr.js"></script>
 
     <h1>Clappr with Video Analytics integration</h1>
     <div id="player"></div>
@@ -11,19 +11,16 @@
   source: "http://clappr.io/highline.mp4",
   parentId: "#player",
   autoPlay: true
-});
+})
 
-console.log(clappr);
 var videoAnalytics = new VideoAnalytics.Clappr({
   player: clappr,
-  token: "eyJpdiI6InhmM1pMd1NmN2FUMXdObU1oc25UUWc9PSIsInZhbHVlIjoiSGxwRlwvSlwvMmdiTjVLaGEwRkFqa0g0Z2FcL1wvajQyS0FmKzZBNmZKcnZUZnpTVk40ekhsMmRpcnB5elloTVR3OTNcL29zUkM0WTFxNDhaemNhWnNoV0Z0UT09IiwibWFjIjoiZDlmMTAwM2QyMDM2MmRhOTcwMzNkM2FjMmRjNmJkMzBiNTI5MTliZDg3ZGM1NTllYzYwYzQyMDc4NWQ4ZmRlYyJ9",
+  //token: "eyJpdiI6InhmM1pMd1NmN2FUMXdObU1oc25UUWc9PSIsInZhbHVlIjoiSGxwRlwvSlwvMmdiTjVLaGEwRkFqa0g0Z2FcL1wvajQyS0FmKzZBNmZKcnZUZnpTVk40ekhsMmRpcnB5elloTVR3OTNcL29zUkM0WTFxNDhaemNhWnNoV0Z0UT09IiwibWFjIjoiZDlmMTAwM2QyMDM2MmRhOTcwMzNkM2FjMmRjNmJkMzBiNTI5MTliZDg3ZGM1NTllYzYwYzQyMDc4NWQ4ZmRlYyJ9",
   datas: {
     isoCode: "FR"
   },
   baseUrl: "http://video-analytics-realtime.app:1337"
-  //environment: "dev"
-});
-//console.log(haha)
+})
 </script>
   </body>
 </html>

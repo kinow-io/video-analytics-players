@@ -75,7 +75,6 @@ export default class Player {
     await this._socket.connectSocket()
     await this.getDuration()
     await this.getSeek()
-    //await this.checkFinished()
     await this.init()
 
     if (this.autoPlay) {
@@ -108,13 +107,19 @@ export default class Player {
     console.log("[Player] => 1 - Seek")
     let url = `${uri}/seek`
 
-    await this._socket.get(url, params).then(result => {
-      if (result.seek >= this.duration) {
-        this.seek = 0
-      } else {
-        this.seek = result.seek
-      }
-    })
+    await this._socket
+      .get(url, params)
+      .then(result => {
+        if (result.seek >= this.duration) {
+          this.seek = 0
+        } else {
+          this.seek = result.seek
+        }
+      })
+      .catch(err => {
+        this._socket.disconnect()
+        console.error(err.message)
+      })
   }
 
   /**
@@ -124,10 +129,16 @@ export default class Player {
   init() {
     let url = `${uri}/init`
 
-    return this._socket.get(url, this.player).then(data => {
-      this.player.playerId = data.playerId
-      this.player.connectionId = data.playerId
-    })
+    return this._socket
+      .get(url, this.player)
+      .then(data => {
+        this.player.playerId = data.playerId
+        this.player.connectionId = data.playerId
+      })
+      .catch(err => {
+        this._socket.disconnect()
+        console.error(err.message)
+      })
   }
 
   /**
@@ -138,8 +149,19 @@ export default class Player {
     console.log("[Player] => Play")
     let url = `${uri}/play`
 
-    await this._socket.put(url).then(data => {})
-    return this._socket.post("/connections").then(data => {})
+    await this._socket
+      .put(url)
+      .then(data => {})
+      .catch(err => {
+        console.error(err.message)
+      })
+    return this._socket
+      .post("/connections")
+      .then(data => {})
+      .catch(err => {
+        this._socket.disconnect()
+        console.error(err.message)
+      })
   }
 
   /**
@@ -154,8 +176,18 @@ export default class Player {
         seek: this.seek
       })
       .then(data => {})
+      .catch(err => {
+        this._socket.disconnect()
+        console.error(err.message)
+      })
 
-    return this._socket.delete(`/connections/${this.player.connectionId}`).then(data => {})
+    return this._socket
+      .delete(`/connections/${this.player.connectionId}`)
+      .then(data => {})
+      .catch(err => {
+        this._socket.disconnect()
+        console.error(err.message)
+      })
   }
 
   /**

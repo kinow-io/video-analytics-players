@@ -53,15 +53,15 @@ export class Clappr extends Player {
     options.playerName = playerName
     options.playerVersion = playerVersion
 
+    if (!options.token) {
+      throw Error("token is missing.")
+    }
+
     super(options)
 
-    this.player.token = options.token
     this.status = "ready"
-    this.canPlay = true
 
     this.capturePlayerEvents()
-
-    //this.autoPlay = false;
   }
 
   /**
@@ -110,6 +110,4 @@ export class Clappr extends Player {
       })
     })
   }
-
-  canPlay() {}
 }
