@@ -3,7 +3,7 @@
 [![node](https://img.shields.io/node/v/kinow-video-analytics.svg?style=flat-square)](https://www.npmjs.com/package/kinow-video-analytics)
 [![npm](https://img.shields.io/npm/l/kinow-video-analytics.svg?style=flat-square)](https://www.npmjs.com/package/kinow-video-analytics)
 
-<p align="center"><img src="https://d2y0bfd3ultfve.cloudfront.net/img/logo-baseline.png" width="300"></p>
+<p align="center"><img src="https://d2y0bfd3ultfve.cloudfront.net/img/logo-bleu-800.png" width="300"></p>
 
 # Kinow Video Analytics players integration
 
