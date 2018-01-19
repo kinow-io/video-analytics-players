@@ -3,9 +3,13 @@
 [![node](https://img.shields.io/node/v/kinow-video-analytics.svg?style=flat-square)](https://www.npmjs.com/package/kinow-video-analytics)
 [![npm](https://img.shields.io/npm/l/kinow-video-analytics.svg?style=flat-square)](https://www.npmjs.com/package/kinow-video-analytics)
 
-## Kinow Video Analytics player integration
+<p align="center"><img src="https://d2y0bfd3ultfve.cloudfront.net/img/logo-baseline.png" width="300"></p>
 
-### Compatible video players
+# Kinow Video Analytics players integration
+
+Before use it, you have to create an account at [Kinow Solution](https://www.kinow.com).
+
+### Compatible video players examples
 
 | Player                               | Version |
 | ------------------------------------ | ------- |
