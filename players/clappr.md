@@ -21,7 +21,7 @@ let clappr = new Clappr.Player({
 // Kinow Video Player Analytics
 let videoAnalytics = new VideoAnalytics.Clappr({
   player: clappr, // Your Clappr video player
-  token: "a-kinow-token"
+  token: "a-kinow-token",
   datas: {
     isoCode: "FR" // Iso code for your customer country
   },
