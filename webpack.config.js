@@ -4,6 +4,7 @@ module.exports = {
   entry: {
     clappr: "./src/clappr.js",
     flowplayer: "./src/flowplayer.js",
+    videojs: "./src/videojs.js",
     main: "./src/index.js"
   },
   output: {
@@ -12,6 +13,7 @@ module.exports = {
     library: "VideoAnalytics",
     libraryTarget: "umd"
   },
+  mode: "development",
   module: {
     rules: [
       {
