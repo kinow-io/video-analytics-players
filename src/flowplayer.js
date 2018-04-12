@@ -57,7 +57,7 @@ export class Flowplayer extends Player {
       throw Error("hostingId or token is missing.")
     }
 
-    if (!options.token && !options.customerId) {
+    if (!options.token) {
       throw Error("customerId or token is missing.")
     }
 
