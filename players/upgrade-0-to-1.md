@@ -1,7 +1,7 @@
 # Upgrade Video Analytics to newest version
 
 
-## Delete and replace depenencies
+## Delete and replace dependencies
 
 Delete these javascript dependencies:
 
@@ -64,7 +64,7 @@ let clappr = new Clappr.Player({
 
 // Kinow Video Player Analytics
 let videoAnalytics = new VideoAnalytics.Clappr({
-  player: clappr, // Your Clappr video player IS REQUIRED
+  player: clappr, // Your Clappr video player that you instantiated before
   hostingId: <integer>,
   videoId: <integer>,
   customerId: <integer>,
