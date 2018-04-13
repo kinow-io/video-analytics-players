@@ -1,7 +1,7 @@
 import Player from "./player.js"
 
 const playerName = "clappr"
-const playerVersion = "1.0.0"
+const playerVersion = "1.1.0"
 
 /**
  * @class Clappr
@@ -53,11 +53,23 @@ export class Clappr extends Player {
     options.playerName = playerName
     options.playerVersion = playerVersion
 
-    if (!options.token) {
-      throw Error("token is missing.")
+    if (!options.token && !options.hostingId) {
+      throw Error("hostingId or token is missing.")
+    }
+
+    if (!options.token && !options.videoId) {
+      throw Error("videoId or token is missing.")
     }
 
     super(options)
+
+    if (!options.token) {
+      this.player.ids = {
+        hostingId: options.hostingId,
+        videoId: options.videoId,
+        customerId: options.customerId
+      }
+    }
 
     this.status = "ready"
 
