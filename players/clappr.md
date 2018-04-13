@@ -21,9 +21,11 @@ let clappr = new Clappr.Player({
 // Kinow Video Player Analytics
 let videoAnalytics = new VideoAnalytics.Clappr({
   player: clappr, // Your Clappr video player
-  token: "a-kinow-token",
+  hostingId: <integer>,
+  videoId: <integer>,
+  customerId: <integer>,
   datas: {
-    isoCode: "FR" // Iso code for your customer country
+    isoCode: "<string>" // Iso code for your customer country
   },
 });
 ```
