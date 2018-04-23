@@ -1,7 +1,7 @@
 import Player from "./player.js"
 
 const playerName = "videojs"
-const playerVersion = "1.0.0"
+const playerVersion = "1.0.1"
 
 /**
  * @class VideoJs
@@ -53,8 +53,12 @@ export class VideoJs extends Player {
     options.playerName = playerName
     options.playerVersion = playerVersion
 
-    if (!options.token) {
-      throw Error("token is missing.")
+    if (!options.token && !options.hostingId) {
+      throw Error("hostingId or token is missing.")
+    }
+
+    if (!options.token && !options.videoId) {
+      throw Error("videoId or token is missing.")
     }
 
     super(options)
