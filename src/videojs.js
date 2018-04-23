@@ -1,7 +1,7 @@
 import Player from "./player.js"
 
 const playerName = "videojs"
-const playerVersion = "1.0.1"
+const playerVersion = "1.0.2"
 
 /**
  * @class VideoJs
@@ -62,6 +62,14 @@ export class VideoJs extends Player {
     }
 
     super(options)
+
+    if (!options.token) {
+      this.player.ids = {
+        hostingId: options.hostingId,
+        videoId: options.videoId,
+        customerId: options.customerId
+      }
+    }
 
     this.status = "ready"
 
