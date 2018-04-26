@@ -1,7 +1,7 @@
 import Player from "./player.js"
 
 const playerName = "clappr"
-const playerVersion = "1.1.1"
+const playerVersion = "1.1.2"
 
 /**
  * @class Clappr
@@ -50,6 +50,7 @@ export class Clappr extends Player {
    * @param {Object} options
    */
   constructor(options) {
+
     options.playerName = playerName
     options.playerVersion = playerVersion
 
@@ -121,9 +122,12 @@ export class Clappr extends Player {
 
   onReady () {
     return new Promise((resolve, reject) => {
-      this.api.core.getCurrentContainer().on("container:loadedmetadata", data => {
-        resolve(data)
+      this.api.on('ready', () => {
+          this.api.core.getCurrentContainer().on("container:loadedmetadata", data => {
+            resolve(data)
+          })
       })
+
     })
   }
 }
