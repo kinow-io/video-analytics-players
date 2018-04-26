@@ -107,7 +107,7 @@ export class Clappr extends Player {
 
     this.api.on("stop", () => {
       this.status = "ready"
-      this.stop()
+      this.pause()
     })
   }
 
