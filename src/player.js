@@ -64,7 +64,8 @@ export default class Player {
 
     this.socket
 
-    this.connect()
+    this.onReady().then(() => this.connect())
+    //this.connect()
   }
 
   /**
@@ -73,7 +74,7 @@ export default class Player {
    */
   async connect() {
     await this._socket.connectSocket()
-    await this.getDuration()
+    this.getDuration()
     await this.getSeek()
     await this.init()
 

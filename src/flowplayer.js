@@ -74,6 +74,12 @@ export class Flowplayer extends Player {
     this.capturePlayerEvents()
   }
 
+  onReady () {
+    return new Promise((resolve, reject) => {
+      resolve()
+    })
+  }
+
   /**
    * Flowplayer events from Clappr Video Player.
    * @method capturePlayerEvents

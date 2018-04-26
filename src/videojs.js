@@ -76,6 +76,14 @@ export class VideoJs extends Player {
     this.capturePlayerEvents()
   }
 
+  onReady () {
+    return new Promise((resolve, reject) => {
+        this.api.on("loadedmetadata", data => {
+          resolve(data)
+        })
+    })
+  }
+
   /**
    * Flowplayer events from Clappr Video Player.
    * @method capturePlayerEvents
@@ -125,11 +133,6 @@ export class VideoJs extends Player {
    * @method getDuration
    */
   getDuration() {
-    return new Promise((resolve, reject) => {
-      this.api.on("loadedmetadata", data => {
-        this.duration = this.api.duration()
-        resolve(data)
-      })
-    })
+    this.duration = this.api.duration()
   }
 }

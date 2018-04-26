@@ -81,6 +81,7 @@ export class Clappr extends Player {
    * @method capturePlayerEvents
    */
   capturePlayerEvents() {
+
     this.api.on("play", () => {
       // We have to disable autoPlay for the next play
       if (this.autoPlay) {
@@ -115,9 +116,12 @@ export class Clappr extends Player {
    * @method getDuration
    */
   getDuration() {
+    this.duration = this.api.getDuration()
+  }
+
+  onReady () {
     return new Promise((resolve, reject) => {
       this.api.core.getCurrentContainer().on("container:loadedmetadata", data => {
-        this.duration = data.duration
         resolve(data)
       })
     })
