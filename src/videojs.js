@@ -76,49 +76,35 @@ export class VideoJs extends Player {
     this.capturePlayerEvents()
   }
 
+  /**
+   * Flowplayer load the player
+   * @method onReady
+   */
   onReady () {
-    return new Promise((resolve, reject) => {
-        this.api.on("loadedmetadata", data => {
-          resolve(data)
+      return new Promise((resolve, reject) => {
+        this.api.on('ready', () => {
+            this.api.on("loadedmetadata", data => {
+              resolve(data)
+            })
         })
-    })
-  }
+      })
+    }
 
   /**
-   * Flowplayer events from Clappr Video Player.
+   * Events from VideoJs Video Player.
    * @method capturePlayerEvents
    */
   capturePlayerEvents() {
-
-
-
-      //this.api.controls(false)
-
-      //console.log(this.api.controlBar.progressControl.enabled_ = false)
-
-      this.api.on("play", (e) => {
-
-      // We have to disable autoPlay for the next play
-      // if (this.status === "ready") {
-      //     this.status = "play"
+    this.api.on("play", (e) => {
       this.play()
-      // }
     })
 
     this.api.on("pause", () => {
-
-      // wheck the event ?
-
-      // if (this.status === "play") {
       this.pause()
-      // }
-      // this.status = "ready"
-
     })
 
     this.api.on("ended", () => {
       this.status = "ready"
-
       this.finish()
     })
 
