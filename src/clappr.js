@@ -78,7 +78,21 @@ export class Clappr extends Player {
   }
 
   /**
-   * Flowplayer events from Clappr Video Player.
+   * Clappr load the player
+   * @method onReady
+   */
+  onReady () {
+    return new Promise((resolve, reject) => {
+      this.api.on('ready', () => {
+          this.api.core.getCurrentContainer().on("container:loadedmetadata", data => {
+            resolve(data)
+          })
+      })
+    })
+  }
+
+  /**
+   * Events from Clappr Video Player.
    * @method capturePlayerEvents
    */
   capturePlayerEvents() {
@@ -102,7 +116,6 @@ export class Clappr extends Player {
 
     this.api.on("ended", () => {
       this.status = "ready"
-      console.log("ended")
       this.finish()
     })
 
@@ -118,16 +131,5 @@ export class Clappr extends Player {
    */
   getDuration() {
     this.duration = this.api.getDuration()
-  }
-
-  onReady () {
-    return new Promise((resolve, reject) => {
-      this.api.on('ready', () => {
-          this.api.core.getCurrentContainer().on("container:loadedmetadata", data => {
-            resolve(data)
-          })
-      })
-
-    })
   }
 }
