@@ -64,8 +64,8 @@ export default class Player {
 
     this.socket
 
+    // Check if player loaded before connect socket.
     this.onReady().then(() => this.connect())
-    //this.connect()
   }
 
   /**
