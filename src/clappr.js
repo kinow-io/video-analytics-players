@@ -1,7 +1,7 @@
 import Player from "./player.js"
 
 const playerName = "clappr"
-const playerVersion = "1.1.2"
+const playerVersion = "1.1.3"
 
 /**
  * @class Clappr
