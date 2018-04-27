@@ -9,6 +9,7 @@ const playerVersion = "1.2.1"
  * @constructor
  */
 export class Flowplayer extends Player {
+
   /**
    * Change the seek in video player
    * @property seek
@@ -74,14 +75,20 @@ export class Flowplayer extends Player {
     this.capturePlayerEvents()
   }
 
+  /**
+   * Flowplayer load the player.
+   * @method onReady
+   */
   onReady () {
     return new Promise((resolve, reject) => {
-      resolve()
+      this.api.on("ready", function () {
+        resolve()
+      })
     })
   }
 
   /**
-   * Flowplayer events from Clappr Video Player.
+   * Events from Flowplayer Video Player.
    * @method capturePlayerEvents
    */
   capturePlayerEvents() {
