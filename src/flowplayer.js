@@ -1,7 +1,7 @@
 import Player from "./player"
 
 const playerName = "flowplayer"
-const playerVersion = "1.2.2"
+const playerVersion = "1.2.3"
 
 /**
  * @class Flowplayer
@@ -81,9 +81,7 @@ export class Flowplayer extends Player {
    */
   onReady () {
     return new Promise((resolve, reject) => {
-      this.api.on("ready", function () {
-        resolve()
-      })
+      resolve()
     })
   }
 
