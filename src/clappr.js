@@ -83,11 +83,17 @@ export class Clappr extends Player {
    */
   onReady () {
     return new Promise((resolve, reject) => {
-      this.api.on('ready', () => {
+     if (this.api.isReady) {
+        this.api.core.getCurrentContainer().on("container:loadedmetadata", data => {
+          resolve(data)
+        })
+      } else {
+        this.api.on('ready', () => {
           this.api.core.getCurrentContainer().on("container:loadedmetadata", data => {
             resolve(data)
           })
-      })
+        })
+      }
     })
   }
 
