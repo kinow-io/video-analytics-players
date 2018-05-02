@@ -54,11 +54,15 @@ export class Clappr extends Player {
     options.playerName = playerName
     options.playerVersion = playerVersion
 
-    if (!options.token && !options.hostingId) {
+    if (!Number.isInteger(options.customerId)) {
+      throw Error("customerId is missing.")
+    }
+
+    if (!options.token && !Number.isInteger(options.hostingId)) {
       throw Error("hostingId or token is missing.")
     }
 
-    if (!options.token && !options.videoId) {
+    if (!options.token && !Number.isInteger(options.videoId)) {
       throw Error("videoId or token is missing.")
     }
 
