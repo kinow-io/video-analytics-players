@@ -1,7 +1,7 @@
 import Player from "./player.js"
 
 const playerName = "clappr"
-const playerVersion = "1.1.4"
+const playerVersion = "1.1.5"
 
 /**
  * @class Clappr
@@ -87,17 +87,15 @@ export class Clappr extends Player {
    */
   onReady () {
     return new Promise((resolve, reject) => {
-     if (this.api.isReady) {
+      this.api.on('ready', () => {
         this.api.core.getCurrentContainer().on("container:loadedmetadata", data => {
           resolve(data)
         })
-      } else {
-        this.api.on('ready', () => {
-          this.api.core.getCurrentContainer().on("container:loadedmetadata", data => {
-            resolve(data)
-          })
-        })
-      }
+      })
+
+      this.api.core.getCurrentContainer().on("container:loadedmetadata", data => {
+        resolve(data)
+      })
     })
   }
 
