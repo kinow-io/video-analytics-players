@@ -75,6 +75,7 @@ export default class Player {
   async connect() {
     await this._socket.connectSocket()
     this.getDuration()
+    this.checkDuration()
     await this.getSeek()
     await this.init()
 
@@ -83,6 +84,12 @@ export default class Player {
     }
 
     await this.listenSocket()
+  }
+
+  checkDuration() {
+    if (!this.duration || this.duration === 'null') {
+      throw Error('Video duration does not exists or is null.')
+    }
   }
 
   /**
