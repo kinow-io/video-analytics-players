@@ -1,6 +1,6 @@
 {
   "name": "kinow-video-analytics",
-  "version": "1.2.11",
+  "version": "1.2.12",
   "description": "Video Players adapters for Kinow Video Analytics",
   "main": "index.js",
   "homepage": "https://www.kinow.com",

@@ -1,7 +1,7 @@
 import Player from "./player.js"
 
 const playerName = "videojs"
-const playerVersion = "1.0.4"
+const playerVersion = "1.0.5"
 
 /**
  * @class VideoJs
@@ -83,9 +83,13 @@ export class VideoJs extends Player {
   onReady () {
       return new Promise((resolve, reject) => {
         this.api.on('ready', () => {
-            this.api.on("loadedmetadata", data => {
-              resolve(data)
-            })
+          this.api.on("loadedmetadata", data => {
+            resolve(data)
+          })
+        })
+
+        this.api.on("loadedmetadata", data => {
+          resolve(data)
         })
       })
     }
