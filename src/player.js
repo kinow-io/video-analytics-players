@@ -125,8 +125,8 @@ export default class Player {
         }
       })
       .catch(err => {
+        console.error(err)
         this._socket.disconnect()
-        console.error(err.message)
       })
   }
 
@@ -144,8 +144,8 @@ export default class Player {
         this.player.connectionId = data.playerId
       })
       .catch(err => {
+        console.error(err)
         this._socket.disconnect()
-        console.error(err.message)
       })
   }
 
@@ -161,14 +161,14 @@ export default class Player {
       .put(url)
       .then(data => {})
       .catch(err => {
-        console.error(err.message)
+        console.error(err)
       })
     return this._socket
       .post("/connections")
       .then(data => {})
       .catch(err => {
+        console.error(err)
         this._socket.disconnect()
-        console.error(err.message)
       })
   }
 
@@ -185,16 +185,16 @@ export default class Player {
       })
       .then(data => {})
       .catch(err => {
+        console.error(err)
         this._socket.disconnect()
-        console.error(err.message)
       })
 
     return this._socket
       .delete(`/connections/${this.player.connectionId}`)
       .then(data => {})
       .catch(err => {
+        console.error(err)
         this._socket.disconnect()
-        console.error(err.message)
       })
   }
 

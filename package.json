@@ -1,6 +1,6 @@
 {
   "name": "kinow-video-analytics",
-  "version": "1.2.12",
+  "version": "1.2.14",
   "description": "Video Players adapters for Kinow Video Analytics",
   "main": "index.js",
   "homepage": "https://www.kinow.com",
@@ -24,16 +24,16 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.4",
+    "babel-loader": "^7.1.5",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "eslint": "^4.19.1",
-    "webpack": "^4.8.3",
-    "webpack-cli": "^2.1.3"
+    "webpack": "^4.25.1",
+    "webpack-cli": "^2.1.5"
   },
   "dependencies": {
     "sails.io.js": "^1.2.1",
-    "socket.io-client": "^2.1.0"
+    "socket.io-client": "^2.1.1"
   },
   "engines": {
     "node": ">= 7.6.0"
