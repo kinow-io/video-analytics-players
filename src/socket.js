@@ -94,7 +94,7 @@ export default class Socket {
         this.connected = true
       })
       .catch(err => {
-        console.error(error.message)
+        console.error(err)
       })
   }
 
