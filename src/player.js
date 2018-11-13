@@ -113,6 +113,7 @@ export default class Player {
     }
 
     console.log("[Player] => 1 - Seek")
+
     let url = `${uri}/seek`
 
     await this._socket
