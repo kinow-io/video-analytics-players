@@ -94,7 +94,6 @@ export default class Socket {
         this.connected = true
       })
       .catch(err => {
-        console.log('coucou')
         console.error(err)
       })
   }
@@ -114,9 +113,9 @@ export default class Socket {
   get(url, params = {}) {
     return new Promise((resolve, reject) => {
       this.webSocket.get(url, params, (result, jwr) => {
-        if (result.error) {
-          return reject(result)
-        }
+        // if (result.error) {
+        //   return reject(result)
+        // }
         console.log("get result", result)
         return resolve(result)
       })
@@ -130,9 +129,9 @@ export default class Socket {
   post(url, params = {}) {
     return new Promise((resolve, reject) => {
       this.webSocket.post(url, params, (result, jwr) => {
-        if (result.error) {
-          return reject(result)
-        }
+        // if (result.error) {
+        //   return reject(result)
+        // }
         console.log("post result", result)
         resolve(result)
       })
@@ -146,9 +145,9 @@ export default class Socket {
   put(url, params = {}) {
     return new Promise((resolve, reject) => {
       this.webSocket.put(url, params, (result, jwr) => {
-        if (result.error) {
-          return reject(result)
-        }
+        // if (result.error) {
+        //   return reject(result)
+        // }
         console.log("put result", result)
         resolve(result)
       })
@@ -162,9 +161,9 @@ export default class Socket {
   delete(url, params = {}) {
     return new Promise((resolve, reject) => {
       this.webSocket.delete(url, params, (result, jwr) => {
-        if (result.error) {
-          return reject(result)
-        }
+        // if (result.error) {
+        //   return reject(result)
+        // }
         console.log("delete result", result)
         resolve(result)
       })
