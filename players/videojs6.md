@@ -26,7 +26,9 @@ let videojs = videojs('video-example', { "autoplay": true });
 // Kinow Video Player Analytics
 let videoAnalytics = new VideoAnalytics.VideoJs({
   player: videojs, // Your VideoJs video player
-  token: "a-kinow-token",
+  hostingId: <integer>,
+  videoId: <integer>,
+  customerId: <integer>,
   datas: {
     isoCode: "FR" // Iso code for your customer country
   },
