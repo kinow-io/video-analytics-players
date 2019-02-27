@@ -1,7 +1,7 @@
 import Player from "./player.js"
 
 const playerName = "videojs"
-const playerVersion = "1.0.5"
+const playerVersion = "1.0.6"
 
 /**
  * @class VideoJs

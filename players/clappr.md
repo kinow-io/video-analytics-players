@@ -9,13 +9,14 @@ Add the following script on your HTML:
 
   <!-- Kinow Video Analytics for Clappr -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kinow-video-analytics@latest/dist/clappr.min.js"></script>
+
+  <div id="player"></div>
 </head>
 ```
 
 ```javascript
 // Setup your video player like that:
 let clappr = new Clappr.Player({
-  // your Clappr configuration here
 });
 
 // Kinow Video Player Analytics

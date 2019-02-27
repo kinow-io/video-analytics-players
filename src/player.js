@@ -164,13 +164,6 @@ export default class Player {
       .catch(err => {
         console.error(err)
       })
-    return this._socket
-      .post("/connections")
-      .then(data => {})
-      .catch(err => {
-        console.error(err)
-        this._socket.disconnect()
-      })
   }
 
   /**
@@ -178,20 +171,13 @@ export default class Player {
    * @method pause
    */
   async pause() {
+    console.log("[Player] => Pause")
     let url = `${uri}/pause`
 
     await this._socket
       .put(url, {
         seek: this.seek
       })
-      .then(data => {})
-      .catch(err => {
-        console.error(err)
-        this._socket.disconnect()
-      })
-
-    return this._socket
-      .delete(`/connections/${this.player.connectionId}`)
       .then(data => {})
       .catch(err => {
         console.error(err)

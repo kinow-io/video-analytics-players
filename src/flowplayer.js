@@ -1,7 +1,7 @@
 import Player from "./player"
 
 const playerName = "flowplayer"
-const playerVersion = "1.2.3"
+const playerVersion = "1.2.4"
 
 /**
  * @class Flowplayer
