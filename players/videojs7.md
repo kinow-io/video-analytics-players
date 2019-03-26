@@ -9,7 +9,7 @@ Add the following script on your HTML:
   <link href="https://vjs.zencdn.net/7.3.0/video-js.min.css" rel="stylesheet">
   <script src="https://vjs.zencdn.net/7.3.0/video.min.js"></script>
 
-  <!-- Kinow Video Analytics for Clappr -->
+  <!-- Kinow Video Analytics for VideoJs -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kinow-video-analytics@latest/dist/videojs.min.js"></script>
 </head>
 <body>
