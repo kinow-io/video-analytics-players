@@ -1,6 +1,6 @@
 {
   "name": "kinow-video-analytics",
-  "version": "1.2.21",
+  "version": "1.2.22",
   "description": "Video Players adapters for Kinow Video Analytics",
   "main": "index.js",
   "homepage": "https://www.kinow.com",
@@ -32,7 +32,7 @@
     "webpack-cli": "^3.3.0"
   },
   "dependencies": {
-    "@babel/runtime": "^7.4.2",
+    "@babel/runtime": "^7.4.3",
     "sails.io.js": "^1.2.1",
     "socket.io-client": "^2.2.0"
   },

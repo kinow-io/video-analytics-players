@@ -17,7 +17,10 @@ export default class Socket {
    */
   constructor(options) {
     this.options = options
-    this.query = `player=${this.options.playerName}&version=${this.options.playerVersion}`
+
+    let id = this.options.hostingId + '_' + this.options.customerId + '_' + this.options.videoId
+
+    this.query = `player=${this.options.playerName}&version=${this.options.playerVersion}&id=${id}`
 
     if (this.options.token) {
       this.query = this.query + `&token=${this.options.token}`
