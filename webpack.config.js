@@ -2,6 +2,7 @@ var path = require("path")
 var webpack = require("webpack")
 module.exports = {
   entry: {
+    bitmovin: "./src/bitmovin.js",
     clappr: "./src/clappr.js",
     flowplayer: "./src/flowplayer.js",
     videojs: "./src/videojs.js",
