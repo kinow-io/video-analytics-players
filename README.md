@@ -17,3 +17,4 @@ Before use it, you have to create an account at [Kinow Solution](https://www.kin
 | [Flowplayer](players/flowplayer7.md) | 7       |
 | [Clappr](players/clappr.md)          | 0.2.x   |
 | [VideoJs](players/videojs6.md)       | 6.x     |
+| [Bitmovin](players/bitmovin)         | 8.x     |

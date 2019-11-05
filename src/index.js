@@ -1,5 +1,6 @@
-import { Flowplayer } from "./flowplayer.js"
+import { Bitmovin } from "./bitmovin.js"
 import { Clappr } from "./clappr.js"
+import { Flowplayer } from "./flowplayer.js"
 import { VideoJs } from "./videojs.js"
 
-export { Flowplayer, Clappr, VideoJs }
+export { Bitmovin, Clappr, Flowplayer, VideoJs }
