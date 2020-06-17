@@ -107,6 +107,10 @@ export class Bitmovin extends Player {
     this.api.on("playbackfinished", () => {
       this.pause()
     })
+
+    if (this.api.isPlaying()) {
+      this.play()
+    }
   }
 
   /**
