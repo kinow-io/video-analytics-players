@@ -4,7 +4,7 @@ const playerName = "bitmovin"
 const playerVersion = "1.0.0"
 
 /**
- * @class Flowplayer
+ * @class Bitmovin
  * @extends Player
  * @constructor
  */
@@ -73,12 +73,10 @@ export class Bitmovin extends Player {
       videoId: options.videoId,
       customerId: options.customerId
     }
-
-    this.capturePlayerEvents()
   }
 
   /**
-   * Flowplayer load the player.
+   * Bitmovin load the player.
    * @method onReady
    */
   onReady () {
@@ -90,7 +88,7 @@ export class Bitmovin extends Player {
   }
 
   /**
-   * Events from Flowplayer Video Player.
+   * Events from Bitmovin Video Player.
    * @method capturePlayerEvents
    */
   capturePlayerEvents() {

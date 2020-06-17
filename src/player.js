@@ -65,7 +65,7 @@ export default class Player {
     this.socket
 
     // Check if player loaded before connect socket.
-    this.onReady().then(() => this.connect())
+    this.connect()
   }
 
   /**
@@ -73,6 +73,7 @@ export default class Player {
    * @method connect
    */
   async connect() {
+    console.log('Connect')
     await this._socket.connectSocket()
     this.getDuration()
     this.checkDuration()
@@ -143,6 +144,7 @@ export default class Player {
       .then(data => {
         this.player.playerId = data.playerId
         this.player.connectionId = data.playerId
+        this.capturePlayerEvents()
       })
       .catch(err => {
         console.error(err)

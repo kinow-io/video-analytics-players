@@ -36,15 +36,6 @@ export default class Socket {
   async connectSocket() {
     this.params()
     this.connect()
-    await this.csrf()
-  }
-
-  /**
-   * Reconnect websocket when connection lost.
-   * @method reconnectSocket
-   */
-  reconnectSocket() {
-    this.csrf()
   }
 
   /**
@@ -81,24 +72,6 @@ export default class Socket {
    */
   connect() {
     this.webSocket = io.sails.connect()
-  }
-
-  /**
-   * Get the CSRF from Video Analytics Realtime and set to websocket header.
-   * @method csrf
-   */
-  csrf(url) {
-    this.get("/csrfToken")
-      .then(result => {
-        this.webSocket.headers = {
-          "x-csrf-token": result._csrf
-        }
-
-        this.connected = true
-      })
-      .catch(err => {
-        console.error(err)
-      })
   }
 
   /**
