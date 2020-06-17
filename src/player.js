@@ -79,11 +79,6 @@ export default class Player {
     this.checkDuration()
     await this.getSeek()
     await this.init()
-
-    if (this.autoPlay) {
-      await this.play()
-    }
-
     await this.listenSocket()
   }
 

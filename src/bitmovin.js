@@ -92,10 +92,8 @@ export class Bitmovin extends Player {
    * @method capturePlayerEvents
    */
   capturePlayerEvents() {
-    this.api.on("play", (e, api) => {
-      if (this._socket.isConnected()) {
-        this.play()
-      }
+    this.api.on('playing', () => {
+      this.play()
     })
 
     this.api.on("paused", () => {
@@ -105,9 +103,11 @@ export class Bitmovin extends Player {
     this.api.on("playbackfinished", () => {
       this.pause()
     })
+  }
 
-    if (this.api.isPlaying()) {
-      this.play()
+  play() {
+    if (this._socket.isConnected()) {
+      super.play()
     }
   }
 
