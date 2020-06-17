@@ -73,6 +73,8 @@ export class Bitmovin extends Player {
       videoId: options.videoId,
       customerId: options.customerId
     }
+
+    this.eventInitialized = false
   }
 
   /**
@@ -92,17 +94,37 @@ export class Bitmovin extends Player {
    * @method capturePlayerEvents
    */
   capturePlayerEvents() {
-    this.api.on('playing', () => {
+    if (this.eventInitialized) {
+      return
+    }
+
+    const playingCallback = () => {
       this.play()
-    })
+    }
 
-    this.api.on("paused", () => {
+    const pausedCallback = () => {
       this.pause()
-    })
+    }
 
-    this.api.on("playbackfinished", () => {
+    const playbackfinishedCallback = () => {
       this.pause()
-    })
+    }
+
+    const caststartedCallback = () => {
+      this.socket.disconnect()
+    }
+
+    const caststoppedCallback = () => {
+      this.connect()
+    }
+
+    this.api.on('playing', playingCallback)
+    this.api.on('paused', pausedCallback)
+    this.api.on('playbackfinished', playbackfinishedCallback)
+    this.api.on('caststarted', caststartedCallback)
+    this.api.on('caststopped', caststoppedCallback)
+
+    this.eventInitialized = true
   }
 
   play() {
@@ -116,6 +138,6 @@ export class Bitmovin extends Player {
    * @method getDuration
    */
   getDuration() {
-    this.duration = this.api.getDuration()
+    return this.api.getDuration()
   }
 }

@@ -35,7 +35,7 @@ export default class Player {
    * @type Float
    */
   set duration(duration) {
-    this.player.datas.videoDuration = duration
+    this.player.datas.sourceDuration = duration
   }
 
   /**
@@ -44,7 +44,7 @@ export default class Player {
    * @type Float
    */
   get duration() {
-    return this.player.datas.videoDuration
+    return this.player.datas.sourceDuration || this.getDuration()
   }
 
   /**
@@ -73,9 +73,7 @@ export default class Player {
    * @method connect
    */
   async connect() {
-    console.log('Connect')
     await this._socket.connectSocket()
-    this.getDuration()
     this.checkDuration()
     await this.getSeek()
     await this.init()
