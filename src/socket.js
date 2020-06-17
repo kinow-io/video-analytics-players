@@ -72,6 +72,7 @@ export default class Socket {
    */
   connect() {
     this.webSocket = io.sails.connect()
+    this.connected = true
   }
 
   /**
@@ -80,6 +81,7 @@ export default class Socket {
    */
   disconnect() {
     this.webSocket.disconnect()
+    this.connected = false
   }
 
   /**
