@@ -122,12 +122,26 @@ export class Bitmovin extends Player {
       this.socket.disconnect()
     }
 
+    const stallstartedCallback = () => {
+      if (this.api.isPlaying()) {
+        this.pause()
+      }
+    }
+
+    const stallendedCallback = () => {
+      if (this.api.isPlaying()) {
+        this.play()
+      }
+    }
+
     this.api.on('playing', playingCallback)
     this.api.on('paused', pausedCallback)
     this.api.on('playbackfinished', playbackfinishedCallback)
     this.api.on('caststarted', caststartedCallback)
     this.api.on('caststopped', caststoppedCallback)
     this.api.on('sourceunloaded', sourceunloadedCallback)
+    this.api.on('stallstarted', stallstartedCallback)
+    this.api.on('stallended', stallendedCallback)
 
     this.eventInitialized = true
   }
