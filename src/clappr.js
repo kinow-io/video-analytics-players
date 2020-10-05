@@ -72,7 +72,9 @@ export class Clappr extends Player {
       this.player.ids = {
         hostingId: options.hostingId,
         videoId: options.videoId,
-        customerId: options.customerId
+        customerId: options.customerId,
+        groupId: options.groupId,
+        accessId: options.accessId
       }
     }
 
