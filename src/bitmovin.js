@@ -143,6 +143,10 @@ export class Bitmovin extends Player {
     this.api.on('stallstarted', stallstartedCallback)
     this.api.on('stallended', stallendedCallback)
 
+    if (!this.eventInitialized && this.api.isPlaying()) {
+      this.play()
+    }
+
     this.eventInitialized = true
   }
 
