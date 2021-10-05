@@ -8,7 +8,7 @@ Add the following script on your HTML:
   <script type="text/javascript" src="https://cdn.bitmovin.com/player/web/8.20.0/bitmovinplayer.js"></script>
 
   <!-- Kinow Video Analytics for Clappr -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kinow-video-analytics@latest/dist/clappr.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kinow-video-analytics@latest/dist/bitmovin.min.js"></script>
 
   <div id="player"></div>
 </head>
