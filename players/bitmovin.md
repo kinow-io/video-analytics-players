@@ -30,10 +30,13 @@ let bitmovin = new bitmovin.player.Player(container, config);
 let videoAnalytics = new VideoAnalytics.Bitmovin({
   player: bitmovin, // Your Bitmovin video player
   datas: {
-    isoCode: "FR" // Iso code for your customer country
+    isoCode: STRING, // Customer country ISO code, eg. "FR" for France (optionnal variable)
+    sourceDuration: INTEGER, // Duration in second of video (mandatory variable)
+    groupId: INTEGER, // To agregate data based on a customer group (optionnal variable) - CustomerGroup ID
+    accessId: INTEGER // To agregate data based on an access mode (optionnal variable) - ProductAccess ID
   },
-  hostingId: INTEGER,
-  videoId: INTEGER,
-  customerId: INTEGER,
+  hostingId: INTEGER, // Kinow platform ID (mandatory variable)
+  videoId: INTEGER, // Video ID (mandatory variable)
+  customerId: INTEGER // Customer ID (mandatory variable)
 });
 ```
