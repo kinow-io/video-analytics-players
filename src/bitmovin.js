@@ -76,6 +76,8 @@ export class Bitmovin extends Player {
       customerId: options.customerId
     }
 
+    this.forceReload = options.forceReload || false,
+
     this.eventInitialized = false
   }
 
