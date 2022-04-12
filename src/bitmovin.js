@@ -1,7 +1,7 @@
-import Player from "./player";
+import Player from "./player"
 
-const playerName = "bitmovin";
-const playerVersion = "1.0.0";
+const playerName = "bitmovin"
+const playerVersion = "1.0.0"
 
 /**
  * @class Bitmovin
@@ -9,6 +9,7 @@ const playerVersion = "1.0.0";
  * @constructor
  */
 export class Bitmovin extends Player {
+
   /**
    * Change the seek in video player
    * @property seek
@@ -26,7 +27,7 @@ export class Bitmovin extends Player {
    * @type Float
    */
   get seek() {
-    return this.api.getCurrentTime();
+    return this.api.getCurrentTime()
   }
 
   /**
@@ -35,10 +36,10 @@ export class Bitmovin extends Player {
    * @type Boolean
    */
   get autoPlay() {
-    if (this.api.getConfig().hasOwnProperty("playback")) {
-      return this.api.getConfig().playback.autoplay;
+    if (this.api.getConfig().hasOwnProperty('playback')) {
+      return this.api.getConfig().playback.autoplay
     } else {
-      return false;
+      return false
     }
   }
 
@@ -48,7 +49,7 @@ export class Bitmovin extends Player {
    * @type Boolean
    */
   set autoPlay(autoPlay) {
-    this.api.getConfig().playback.autoplay = autoPlay || false;
+    this.api.getConfig().playback.autoplay = autoPlay || false
   }
 
   /**
@@ -56,40 +57,38 @@ export class Bitmovin extends Player {
    * @param {Object} options
    */
   constructor(options) {
-    options.playerName = playerName;
-    options.playerVersion = playerVersion;
+    options.playerName = playerName
+    options.playerVersion = playerVersion
 
     if (!options.hostingId) {
-      throw Error("hostingId is missing.");
+      throw Error("hostingId is missing.")
     }
 
     if (!options.videoId) {
-      throw Error("videoId is missing.");
+      throw Error("videoId is missing.")
     }
 
-    super(options);
+    super(options)
 
     this.player.ids = {
       hostingId: options.hostingId,
       videoId: options.videoId,
-      customerId: options.customerId,
-    };
+      customerId: options.customerId
+    }
 
-    this.forceReload = options.forceReload || false,
-
-    this.eventInitialized = false;
+    this.eventInitialized = false
   }
 
   /**
    * Bitmovin load the player.
    * @method onReady
    */
-  onReady() {
+  onReady () {
     return new Promise((resolve, reject) => {
-      this.api.on("ready", () => {
-        resolve();
-      });
-    });
+      this.api.on('ready', () => {
+        resolve()
+      })
+    })
   }
 
   /**
@@ -98,64 +97,64 @@ export class Bitmovin extends Player {
    */
   capturePlayerEvents() {
     if (this.eventInitialized) {
-      return;
+      return
     }
 
     const playingCallback = () => {
-      this.play();
-    };
+      this.play()
+    }
 
     const pausedCallback = () => {
-      this.pause();
-    };
+      this.pause()
+    }
 
     const playbackfinishedCallback = () => {
-      this.pause();
-    };
+      this.pause()
+    }
 
     const caststartedCallback = () => {
-      this.socket.disconnect();
-    };
+      this.socket.disconnect()
+    }
 
     const caststoppedCallback = () => {
-      this.connect();
-    };
+      this.connect()
+    }
 
     const sourceunloadedCallback = () => {
-      this.socket.disconnect();
-    };
+      this.socket.disconnect()
+    }
 
     const stallstartedCallback = () => {
       if (this.api.isPlaying()) {
-        this.pause();
+        this.pause()
       }
-    };
+    }
 
     const stallendedCallback = () => {
       if (this.api.isPlaying()) {
-        this.play();
+        this.play()
       }
-    };
-
-    this.api.on("playing", playingCallback);
-    this.api.on("paused", pausedCallback);
-    this.api.on("playbackfinished", playbackfinishedCallback);
-    this.api.on("caststarted", caststartedCallback);
-    this.api.on("caststopped", caststoppedCallback);
-    this.api.on("sourceunloaded", sourceunloadedCallback);
-    this.api.on("stallstarted", stallstartedCallback);
-    this.api.on("stallended", stallendedCallback);
-
-    if (!this.eventInitialized && this.api.isPlaying()) {
-      this.play();
     }
 
-    this.eventInitialized = true;
+    this.api.on('playing', playingCallback)
+    this.api.on('paused', pausedCallback)
+    this.api.on('playbackfinished', playbackfinishedCallback)
+    this.api.on('caststarted', caststartedCallback)
+    this.api.on('caststopped', caststoppedCallback)
+    this.api.on('sourceunloaded', sourceunloadedCallback)
+    this.api.on('stallstarted', stallstartedCallback)
+    this.api.on('stallended', stallendedCallback)
+
+    if (!this.eventInitialized && this.api.isPlaying()) {
+      this.play()
+    }
+
+    this.eventInitialized = true
   }
 
   play() {
     if (this._socket.isConnected()) {
-      super.play();
+      super.play()
     }
   }
 
@@ -164,6 +163,6 @@ export class Bitmovin extends Player {
    * @method getDuration
    */
   getDuration() {
-    return this.api.getDuration();
+    return this.api.getDuration()
   }
 }
