@@ -1,4 +1,4 @@
-import WebSocket from "./socket.js"
+import WebSocket from "./socket"
 
 const uri = "/players"
 
@@ -7,10 +7,15 @@ const uri = "/players"
  * @constructor
  */
 export default class Player {
+  protected _socket: Socket
+  protected api: any
+  protected player: any
+  protected seek: number = 0
+  protected eventInitialized = false
+  protected captureEventsFunction = Function
+
   /**
    * Instanciate the Socket class.
-   * @property socket
-   * @type Object
    */
   set socket(options) {
     this._socket = new WebSocket(options)
@@ -18,8 +23,6 @@ export default class Player {
 
   /**
    * Determine if video player loaded in auto play.
-   * @property socket
-   * @type Object
    */
   get socket() {
     if (!this._socket) {
@@ -31,8 +34,6 @@ export default class Player {
 
   /**
    * Determine if video player loaded in auto play.
-   * @property duration
-   * @type Float
    */
   set duration(duration) {
     this.player.datas.sourceDuration = duration
@@ -40,21 +41,13 @@ export default class Player {
 
   /**
    * Determine if video player loaded in auto play.
-   * @property duration
-   * @type Float
    */
   get duration() {
     return this.player.datas.sourceDuration || this.getDuration()
   }
 
-  /**
-   * @method constructor
-   * @param {Object} options
-   */
-  constructor(options) {
+  constructor(protected options: any) {
     this.api = options.player
-
-    this.options = options
 
     this.player = {
       playerId: null,

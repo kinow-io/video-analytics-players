@@ -1,8 +1,8 @@
 {
   "name": "kinow-video-analytics",
-  "version": "1.3.26",
+  "version": "1.3.27",
   "description": "Video Players adapters for Kinow Video Analytics",
-  "main": "index.js",
+  "main": "index.ts",
   "homepage": "https://www.kinow.com",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

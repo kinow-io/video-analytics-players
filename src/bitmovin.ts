@@ -3,39 +3,29 @@ import Player from "./player"
 const playerName = "bitmovin"
 const playerVersion = "1.0.0"
 
-/**
- * @class Bitmovin
- * @extends Player
- * @constructor
- */
 export class Bitmovin extends Player {
+  private forceReload = false
 
   /**
    * Change the seek in video player
-   * @property seek
-   * @type Float
    */
-  set seek(seek) {
+  set seek (seek: number) {
     if (!this.forceReload) {
-      this.api.seek(seek);
+      this.api.seek(seek)
     }
   }
 
   /**
    * returns the current seek.
-   * @property options
-   * @type Float
    */
-  get seek() {
+  get seek (): number {
     return this.api.getCurrentTime()
   }
 
   /**
    * Determine if video player loaded in auto play.
-   * @property autoPlay
-   * @type Boolean
    */
-  get autoPlay() {
+  get autoPlay (): boolean {
     if (this.api.getConfig().hasOwnProperty('playback')) {
       return this.api.getConfig().playback.autoplay
     } else {
@@ -48,15 +38,21 @@ export class Bitmovin extends Player {
    * @property autoPlay
    * @type Boolean
    */
-  set autoPlay(autoPlay) {
+  set autoPlay (autoPlay: boolean) {
     this.api.getConfig().playback.autoplay = autoPlay || false
   }
 
   /**
    * @method constructor
-   * @param {Object} options
    */
-  constructor(options) {
+  constructor (options: {
+    playerName: string,
+    playerVersion: string,
+    hostingId: number,
+    customerId: number,
+    videoId: number,
+    forceReload: boolean,
+  }) {
     options.playerName = playerName
     options.playerVersion = playerVersion
 
@@ -73,7 +69,7 @@ export class Bitmovin extends Player {
     this.player.ids = {
       hostingId: options.hostingId,
       videoId: options.videoId,
-      customerId: options.customerId
+      customerId: options.customerId,
     }
 
     this.forceReload = options.forceReload || false
@@ -85,10 +81,10 @@ export class Bitmovin extends Player {
    * Bitmovin load the player.
    * @method onReady
    */
-  onReady () {
+  onReady (): Promise<boolean> {
     return new Promise((resolve, reject) => {
       this.api.on('ready', () => {
-        resolve()
+        resolve(true)
       })
     })
   }
@@ -97,7 +93,7 @@ export class Bitmovin extends Player {
    * Events from Bitmovin Video Player.
    * @method capturePlayerEvents
    */
-  capturePlayerEvents() {
+  capturePlayerEvents () {
     if (this.eventInitialized) {
       return
     }
@@ -154,7 +150,7 @@ export class Bitmovin extends Player {
     this.eventInitialized = true
   }
 
-  play() {
+  play () {
     if (this._socket.isConnected()) {
       super.play()
     }
@@ -162,9 +158,8 @@ export class Bitmovin extends Player {
 
   /**
    * Get the duration of video player.
-   * @method getDuration
    */
-  getDuration() {
+  getDuration () {
     return this.api.getDuration()
   }
 }

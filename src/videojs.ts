@@ -1,4 +1,4 @@
-import Player from "./player.js"
+import Player from "./player.ts"
 
 const playerName = "videojs"
 const playerVersion = "1.0.6"
