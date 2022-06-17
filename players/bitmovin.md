@@ -37,6 +37,7 @@ let videoAnalytics = new VideoAnalytics.Bitmovin({
   },
   hostingId: INTEGER, // Kinow platform ID (mandatory variable)
   videoId: INTEGER, // Video ID (mandatory variable)
-  customerId: INTEGER // Customer ID (mandatory variable)
+  customerId: INTEGER, // Customer ID (mandatory variable)
+  forceReload: BOOLEAN, // Force Relod and ignore data stored in DB (optionnal variable, default: false)
 });
 ```

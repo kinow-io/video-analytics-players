@@ -16,7 +16,9 @@ export class Bitmovin extends Player {
    * @type Float
    */
   set seek(seek) {
-    this.api.seek(seek)
+    if (!this.forceReload) {
+      this.api.seek(seek);
+    }
   }
 
   /**
@@ -73,6 +75,8 @@ export class Bitmovin extends Player {
       videoId: options.videoId,
       customerId: options.customerId
     }
+
+    this.forceReload = options.forceReload || false,
 
     this.eventInitialized = false
   }
