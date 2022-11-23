@@ -59,7 +59,13 @@ export default class Player {
     this.player = {
       playerId: null,
       connectionId: null,
-      datas: options.datas
+      datas: options.datas,
+      ids: {
+        hostingId: options.hostingId,
+        videoId: options.videoId,
+        customerId: options.customerId,
+        videoType: options.videoType || 'video'
+      }
     }
 
     this.socket

@@ -64,12 +64,6 @@ export class Flowplayer extends Player {
 
     super(options)
 
-    this.player.ids = {
-      hostingId: options.hostingId,
-      videoId: options.videoId,
-      customerId: options.customerId
-    }
-
     this.capturePlayerEvents()
   }
 
