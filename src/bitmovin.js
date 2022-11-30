@@ -70,12 +70,6 @@ export class Bitmovin extends Player {
 
     super(options)
 
-    this.player.ids = {
-      hostingId: options.hostingId,
-      videoId: options.videoId,
-      customerId: options.customerId
-    }
-
     this.forceReload = options.forceReload || false
 
     this.eventInitialized = false
