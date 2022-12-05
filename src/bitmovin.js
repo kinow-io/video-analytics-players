@@ -27,7 +27,7 @@ export class Bitmovin extends Player {
    * @type Float
    */
   get seek() {
-    return this.api.getCurrentTime()
+    return isFinite(this.getDuration()) ? this.api.getCurrentTime() : 0
   }
 
   /**
