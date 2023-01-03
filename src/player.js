@@ -17,7 +17,7 @@ export default class Player {
   }
 
   /**
-   * Determine if video player loaded in auto play.
+   * Get socket object
    * @property socket
    * @type Object
    */
@@ -30,36 +30,47 @@ export default class Player {
   }
 
   /**
-   * Determine if video player loaded in auto play.
-   * @property duration
-   * @type Float
+   * Set video duration
+   * @property {number} duration
    */
   set duration(duration) {
     this.player.datas.sourceDuration = duration
   }
 
   /**
-   * Determine if video player loaded in auto play.
-   * @property duration
-   * @type Float
+   * Get video duration
+   * @type number
    */
   get duration() {
-    return this.player.datas.sourceDuration || this.getDuration()
+    return !isNaN(this.player.datas.sourceDuration) ? this.player.datas.sourceDuration : this.getDuration()
   }
 
   /**
    * @method constructor
-   * @param {Object} options
+   * @param {{
+   *  datas: {
+   *    sourceDuration: number
+   *  }
+   * }} options
    */
   constructor(options) {
     this.api = options.player
 
     this.options = options
 
+    /**
+     * @type {{datas: {sourceDuration: number}, connectionId: string, playerId: string}}
+     */
     this.player = {
       playerId: null,
       connectionId: null,
-      datas: options.datas
+      datas: options.datas,
+      ids: {
+        hostingId: options.hostingId,
+        videoId: options.videoId,
+        customerId: options.customerId,
+        videoType: options.videoType || 'video'
+      }
     }
 
     this.socket
@@ -75,14 +86,16 @@ export default class Player {
   async connect() {
     await this._socket.connectSocket()
     this.checkDuration()
-    await this.getSeek()
     await this.init()
+    if (this.duration) {
+      await this.getSeek()
+    }
     await this.listenSocket()
   }
 
   checkDuration() {
-    if (!this.duration || this.duration === 'null') {
-      throw Error('Video duration does not exists or is null.')
+    if (!isFinite(this.duration) || this.duration === 'null') {
+      throw Error('Video duration is infinite or null.')
     }
   }
 

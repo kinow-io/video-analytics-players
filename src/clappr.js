@@ -68,14 +68,6 @@ export class Clappr extends Player {
 
     super(options)
 
-    if (!options.token) {
-      this.player.ids = {
-        hostingId: options.hostingId,
-        videoId: options.videoId,
-        customerId: options.customerId
-      }
-    }
-
     this.status = "ready"
 
     this.capturePlayerEvents()

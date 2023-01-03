@@ -27,7 +27,7 @@ export class Bitmovin extends Player {
    * @type Float
    */
   get seek() {
-    return this.api.getCurrentTime()
+    return isFinite(this.getDuration()) ? this.api.getCurrentTime() : 0
   }
 
   /**
@@ -69,12 +69,6 @@ export class Bitmovin extends Player {
     }
 
     super(options)
-
-    this.player.ids = {
-      hostingId: options.hostingId,
-      videoId: options.videoId,
-      customerId: options.customerId
-    }
 
     this.forceReload = options.forceReload || false
 
