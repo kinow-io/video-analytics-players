@@ -86,10 +86,10 @@ export default class Player {
   async connect() {
     await this._socket.connectSocket()
     this.checkDuration()
-    await this.init()
     if (this.duration) {
       await this.getSeek()
     }
+    await this.init()
     await this.listenSocket()
   }
 
